@@ -1,0 +1,8 @@
+- hosts: Nodes
+  tasks:
+  - name: Deploy the service
+    k8s:
+      state: present
+      definition: "{{ lookup('template', 'jenkins_instance.yaml') | from_yaml }}"
+      validate_certs: no
+      namespace: default
